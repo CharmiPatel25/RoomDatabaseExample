@@ -42,7 +42,7 @@ public abstract class WordRoomDatabase extends RoomDatabase {
 
             // If you want to keep data through app restarts,
             // comment out the following block
-            databaseWriteExecutor.execute(() -> {
+         /*  databaseWriteExecutor.execute(() -> {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
                 WordDao dao = INSTANCE.wordDao();
@@ -52,7 +52,9 @@ public abstract class WordRoomDatabase extends RoomDatabase {
                 dao.insert(word);
                 word = new Word("World");
                 dao.insert(word);
-            });
+                Word add = new Word("Add");
+                dao .insert(add);
+            }); */
         }
     };
 }
