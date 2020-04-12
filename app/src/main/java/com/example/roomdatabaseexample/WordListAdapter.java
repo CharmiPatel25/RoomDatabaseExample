@@ -13,11 +13,13 @@ import java.util.List;
 public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordViewHolder> {
 
     class WordViewHolder extends RecyclerView.ViewHolder {
-        private final TextView wordItemView;
+        private final TextView name, designation, employeeDepartment;
 
         private WordViewHolder(View itemView) {
             super(itemView);
-            wordItemView = itemView.findViewById(R.id.textView);
+            name = itemView.findViewById(R.id.name);
+            designation = itemView.findViewById(R.id.designation);
+            employeeDepartment = itemView.findViewById(R.id.employeeDepartment);
         }
     }
 
@@ -34,13 +36,10 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
     @Override
     public void onBindViewHolder(WordViewHolder holder, int position) {
-        if (mWords != null) {
-            Word current = mWords.get(position);
-            holder.wordItemView.setText(current.getWord());
-        } else {
-            // Covers the case of data not being ready yet.
-            holder.wordItemView.setText("No Word");
-        }
+        Word current = mWords.get(position);
+        holder.name.setText(current.getFirst() + " " + current.getLast());
+        holder.designation.setText(current.getTitle());
+        holder.employeeDepartment.setText(current.getDepartment());
     }
 
     void setWords(List<Word> words){
